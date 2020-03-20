@@ -1,0 +1,10 @@
+#mainHeader{
+    background-color: #3fa110;
+    box-shadow: 1px 0px 2px black;
+    padding: 20px;
+}
+
+#mainHeader .title-principal {
+    color: white;
+    text-align: center;
+}

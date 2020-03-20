@@ -1,0 +1,9 @@
+.registerForm{
+  margin-top: '1em';
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}

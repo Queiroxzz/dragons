@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+thead {
+  text-align: center;
+  font-size: italic;
+  border: 3px solid green;
+  padding-bottom: 2px;
+
+
+}
+
+thead th{
+  background-color: #58a110;
+  color: white;
+  height: 30px;
+  border: 1px solid white;
+
+}
+
+tbody{
+  text-align: center;
+  border: 3px solid green;
+
+}
+
+tbody td{
+  border: 3px solid green;
+  height: 20px;
+
+}
