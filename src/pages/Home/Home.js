@@ -1,4 +1,4 @@
-import { Button, Spacing, toast } from '@sicredi/react';
+import { Button, Spacing, toast, Loader} from '@sicredi/react';
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
@@ -9,7 +9,6 @@ import './home.css';
 
 function Home({ history }) {
   const [dragons, setDragons] = useState([]);
-  const [editing, setEditing] = useState(false);
   const [loader, showLoader] = useState(false);
 
   const getDragons = useCallback(async () => {
@@ -26,6 +25,10 @@ function Home({ history }) {
   useEffect(() => {
     getDragons();
   }, [getDragons]);
+
+  const editDragon = id => {
+    history.push(`/dragonRegister/${id}`);
+  };
 
   const deleteDragons = async () => {
     const radios = document.getElementsByName('dragonId');
@@ -49,22 +52,7 @@ function Home({ history }) {
       toast.error('Dragão não pode ser deletado no momento, tente mais tarde');
     }
   };
-  const updateDragons = (id, updateDragons) => {
-    setEditing(false);
 
-    setDragons(
-      dragons.map(dragon => (dragon.id === id ? updateDragons : dragons)),
-    );
-  };
-
-  const editROw = dragons => {
-    setEditing(true);
-    setDragons({
-      name: dragons.name,
-      type: dragons.type,
-      histories: dragons.histories
-    });
-  };
 
   const callDragonRegister = () => {
     history.push('/dragonRegister');
@@ -77,6 +65,7 @@ function Home({ history }) {
 
   return (
     <>
+      <Loader show={loader} />
       <Spacing appearance="large" />
       <Header title="Lista de dragões" />
 
@@ -107,7 +96,7 @@ function Home({ history }) {
                 <td>{formatDate(dragon.createdAt)}</td>
                 <td>{dragon.histories}</td>
                 <td>
-                  <Button>Editar</Button>
+                  <Button onClick={() => editDragon(dragon.id)}>Editar</Button>
                 </td>
               </tr>
             );

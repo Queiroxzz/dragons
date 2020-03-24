@@ -8,18 +8,14 @@ import Home from './pages/Home/Home';
 import DragonRegister from './pages/DragonsRegister/DragonRegister';
 import Password from './pages/resetPassword/Password';
 import { Toast } from '@sicredi/react';
-import EditDragons from './pages/editDragons/EditDragons';
-
 
 const App = () => (
   <Layout>
-
     <Toast timeout={3000} />
 
     <Layout.Container>
       <BrowserRouter>
         <Switch>
-
           <Route path="/login">
             <Login />
           </Route>
@@ -32,26 +28,23 @@ const App = () => (
             <Home />
           </Route>
 
-            <Route path="/password">
+          <Route path="/password">
             <Password />
-            </Route>
+          </Route>
 
-            <Route path="/dragonRegister">
+          <Route path="/dragonRegister/:id">
             <DragonRegister />
-            </Route>
+          </Route>
 
-            <Route path="/editDragon">
-            <EditDragons />
-            </Route>
-
+          <Route path="/dragonRegister">
+            <DragonRegister />
+          </Route>
 
           <Route path="*">
             <Login />
           </Route>
-
-          </Switch>
+        </Switch>
       </BrowserRouter>
-
     </Layout.Container>
   </Layout>
 );
